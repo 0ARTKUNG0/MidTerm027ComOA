@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
-// Environment variables
 const API_BASE_URL = "/api";
 const APP_NAME = process.env.REACT_APP_NAME || "Software Download Manager";
-const APP_DESCRIPTION =
-  process.env.REACT_APP_DESCRIPTION ||
-  "Find and download your favorite software";
-const DEBUG_MODE = process.env.REACT_APP_DEBUG === "true";
 
-const HomePage = () => {
+const Dashboard = () => {
   const [software, setSoftware] = useState([]);
   const [filteredSoftware, setFilteredSoftware] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
 
   const categories = ["All", "Browser", "Media", "Utilities"];
 
@@ -34,10 +32,6 @@ const HomePage = () => {
       const data = await response.json();
       setSoftware(data);
       setLoading(false);
-
-      if (DEBUG_MODE) {
-        console.log("Fetched software data:", data);
-      }
     } catch (error) {
       console.error("Error fetching software:", error);
       setLoading(false);
@@ -66,25 +60,52 @@ const HomePage = () => {
 
   const handleDownload = async (softwareId, softwareName) => {
     try {
+      const token = localStorage.getItem("token");
       const response = await fetch(`${API_BASE_URL}/download`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ softwareIds: [softwareId] }),
       });
 
-      const data = await response.json();
-      if (data.success) {
+      // Check if response is a file (binary) or JSON
+      const contentType = response.headers.get("content-type");
+
+      if (contentType && contentType.includes("application/octet-stream")) {
+        // Handle file download
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${softwareName
+          .replace(/\s+/g, "-")
+          .toLowerCase()}-installer.exe`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
         alert(`Download started for ${softwareName}!`);
-        if (DEBUG_MODE) {
+      } else {
+        // Handle JSON response (for multiple downloads)
+        const data = await response.json();
+        if (data.success) {
+          alert(`Download links generated for ${softwareName}!`);
           console.log("Download links:", data.downloadLinks);
+        } else {
+          alert(data.message || "Error starting download");
         }
       }
     } catch (error) {
       console.error("Error downloading software:", error);
       alert("Error starting download");
     }
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
   };
 
   if (loading) {
@@ -97,27 +118,29 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Header */}
+      {/* Header with User Info */}
       <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">{APP_NAME}</h1>
-              <p className="text-gray-600 mt-2">{APP_DESCRIPTION}</p>
+              <p className="text-gray-600 mt-1">
+                Welcome back! Find and download your favorite software
+              </p>
             </div>
-            <div className="flex space-x-4">
-              <Link
-                to="/login"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+            <div className="flex items-center space-x-4">
+              <div className="text-right">
+                <p className="text-sm font-medium text-gray-900">
+                  {user?.fullName}
+                </p>
+                <p className="text-xs text-gray-500">{user?.email}</p>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
               >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                Register
-              </Link>
+                Logout
+              </button>
             </div>
           </div>
         </div>
@@ -225,4 +248,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Dashboard;

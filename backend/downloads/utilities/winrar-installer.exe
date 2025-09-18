@@ -1,0 +1,36 @@
+# WinRAR Installer (Mock)
+
+This is a mock installer file for WinRAR.
+
+## Installation Instructions:
+1. This is a demonstration file
+2. In a real application, this would be the actual WinRAR installer
+3. File size: 3.2MB (simulated)
+4. Version: 6.24
+
+## Features:
+- Advanced compression algorithm
+- Multi-volume archives
+- Password protection and encryption
+- Archive repair capability
+- Unicode support
+
+## Supported Formats:
+- RAR, ZIP, CAB, ARJ, LZH, TAR, GZ, UUE, BZ2, JAR, ISO, 7Z, XZ, Z
+
+## System Requirements:
+- Windows 10 or later
+- 1GB RAM recommended
+- 5MB free disk space
+
+## License Information:
+- 40-day trial period
+- Purchase required for continued use
+- Commercial and personal licenses available
+
+---
+Downloaded from Software Download Manager
+Date: ${new Date().toISOString()}
+
+This is a mock file for demonstration purposes only.
+The actual WinRAR installer can be downloaded from: https://www.win-rar.com/

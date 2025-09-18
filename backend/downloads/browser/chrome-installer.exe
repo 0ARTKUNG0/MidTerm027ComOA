@@ -1,0 +1,27 @@
+# Google Chrome Installer (Mock)
+
+This is a mock installer file for Google Chrome.
+
+## Installation Instructions:
+1. This is a demonstration file
+2. In a real application, this would be the actual Chrome installer
+3. File size: 85MB (simulated)
+4. Version: Latest Stable
+
+## Features:
+- Fast and secure browsing
+- Sync across devices
+- Extensions support
+- Developer tools
+
+## System Requirements:
+- Windows 10 or later
+- 4GB RAM recommended
+- 350MB free disk space
+
+---
+Downloaded from Software Download Manager
+Date: ${new Date().toISOString()}
+
+This is a mock file for demonstration purposes only.
+The actual Chrome installer can be downloaded from: https://www.google.com/chrome/

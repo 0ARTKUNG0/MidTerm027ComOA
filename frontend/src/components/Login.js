@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -7,38 +8,37 @@ const Login = () => {
     password: "",
   });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+    // Clear error when user starts typing
+    if (error) {
+      setError("");
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const result = await login(formData.email, formData.password);
 
-      const data = await response.json();
-
-      if (data.success) {
-        localStorage.setItem("token", data.token);
+      if (result.success) {
         navigate("/dashboard");
       } else {
-        alert("Login failed");
+        setError(result.message || "Login failed");
       }
     } catch (error) {
-      alert("Error connecting to server");
+      console.error("Login error:", error);
+      setError("Error connecting to server");
     } finally {
       setLoading(false);
     }
@@ -52,6 +52,12 @@ const Login = () => {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-6">
+          {error && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+              {error}
+            </div>
+          )}
+
           <div>
             <label
               htmlFor="email"

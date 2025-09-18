@@ -1,0 +1,31 @@
+# 7-Zip Installer (Mock)
+
+This is a mock installer file for 7-Zip.
+
+## Installation Instructions:
+1. This is a demonstration file
+2. In a real application, this would be the actual 7-Zip installer
+3. File size: 1.5MB (simulated)
+4. Version: 23.01
+
+## Features:
+- High compression ratio
+- Strong AES-256 encryption
+- Self-extracting capability
+- Multiple archive formats support
+
+## Supported Formats:
+- 7z, XZ, BZIP2, GZIP, TAR, ZIP, WIM
+- RAR, ARJ, CAB, CHM, CPIO, CramFS, DEB, DMG, FAT, HFS, ISO, LZH, LZMA, MBR, MSI, NSIS, NTFS, RPM, SquashFS, UDF, VHD, WIM, XAR, Z
+
+## System Requirements:
+- Windows 10 or later
+- 1GB RAM recommended
+- 2MB free disk space
+
+---
+Downloaded from Software Download Manager
+Date: ${new Date().toISOString()}
+
+This is a mock file for demonstration purposes only.
+The actual 7-Zip installer can be downloaded from: https://www.7-zip.org/

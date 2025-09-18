@@ -1,0 +1,27 @@
+# Mozilla Firefox Installer (Mock)
+
+This is a mock installer file for Mozilla Firefox.
+
+## Installation Instructions:
+1. This is a demonstration file
+2. In a real application, this would be the actual Firefox installer
+3. File size: 62MB (simulated)
+4. Version: Latest Stable
+
+## Features:
+- Privacy-focused browsing
+- Open source
+- Customizable interface
+- Enhanced tracking protection
+
+## System Requirements:
+- Windows 10 or later
+- 512MB RAM minimum
+- 200MB free disk space
+
+---
+Downloaded from Software Download Manager
+Date: ${new Date().toISOString()}
+
+This is a mock file for demonstration purposes only.
+The actual Firefox installer can be downloaded from: https://www.mozilla.org/firefox/

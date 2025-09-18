@@ -1,0 +1,27 @@
+# VLC Media Player Installer (Mock)
+
+This is a mock installer file for VLC Media Player.
+
+## Installation Instructions:
+1. This is a demonstration file
+2. In a real application, this would be the actual VLC installer
+3. File size: 45MB (simulated)
+4. Version: Latest Stable
+
+## Features:
+- Plays all media formats
+- No additional codecs required
+- Cross-platform compatibility
+- Streaming capabilities
+
+## System Requirements:
+- Windows 10 or later
+- 512MB RAM minimum
+- 100MB free disk space
+
+---
+Downloaded from Software Download Manager
+Date: ${new Date().toISOString()}
+
+This is a mock file for demonstration purposes only.
+The actual VLC installer can be downloaded from: https://www.videolan.org/vlc/

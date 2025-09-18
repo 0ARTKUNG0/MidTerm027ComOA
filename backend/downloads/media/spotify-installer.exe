@@ -1,0 +1,27 @@
+# Spotify Installer (Mock)
+
+This is a mock installer file for Spotify.
+
+## Installation Instructions:
+1. This is a demonstration file
+2. In a real application, this would be the actual Spotify installer
+3. File size: 120MB (simulated)
+4. Version: Latest Stable
+
+## Features:
+- Music streaming service
+- Offline downloads
+- Playlist creation
+- Social sharing
+
+## System Requirements:
+- Windows 10 or later
+- 4GB RAM recommended
+- 250MB free disk space
+
+---
+Downloaded from Software Download Manager
+Date: ${new Date().toISOString()}
+
+This is a mock file for demonstration purposes only.
+The actual Spotify installer can be downloaded from: https://www.spotify.com/

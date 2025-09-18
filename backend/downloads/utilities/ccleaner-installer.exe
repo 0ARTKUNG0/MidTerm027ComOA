@@ -1,0 +1,40 @@
+# CCleaner Installer (Mock)
+
+This is a mock installer file for CCleaner.
+
+## Installation Instructions:
+1. This is a demonstration file
+2. In a real application, this would be the actual CCleaner installer
+3. File size: 28MB (simulated)
+4. Version: 6.17
+
+## Features:
+- System cleaning and optimization
+- Registry cleaner
+- Privacy protection
+- Startup program management
+- Disk space analyzer
+
+## Cleaning Capabilities:
+- Temporary files
+- Browser history and cookies
+- Recycle bin
+- System logs
+- Registry errors
+
+## System Requirements:
+- Windows 10 or later
+- 2GB RAM recommended
+- 100MB free disk space
+
+## License Information:
+- Free version available
+- Professional version with advanced features
+- Business licenses available
+
+---
+Downloaded from Software Download Manager
+Date: ${new Date().toISOString()}
+
+This is a mock file for demonstration purposes only.
+The actual CCleaner installer can be downloaded from: https://www.ccleaner.com/

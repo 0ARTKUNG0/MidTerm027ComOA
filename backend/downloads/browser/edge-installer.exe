@@ -1,0 +1,27 @@
+# Microsoft Edge Installer (Mock)
+
+This is a mock installer file for Microsoft Edge.
+
+## Installation Instructions:
+1. This is a demonstration file
+2. In a real application, this would be the actual Edge installer
+3. File size: 95MB (simulated)
+4. Version: Latest Stable
+
+## Features:
+- Built on Chromium
+- Microsoft integration
+- Enhanced security
+- Collections and vertical tabs
+
+## System Requirements:
+- Windows 10 or later
+- 4GB RAM recommended
+- 350MB free disk space
+
+---
+Downloaded from Software Download Manager
+Date: ${new Date().toISOString()}
+
+This is a mock file for demonstration purposes only.
+The actual Edge installer can be downloaded from: https://www.microsoft.com/edge
