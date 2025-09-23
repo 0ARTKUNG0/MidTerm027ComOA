@@ -9,7 +9,7 @@ import HomePage from "./components/HomePage";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
-import { useAuth } from "./context/AuthContext";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 
 // Loading component
 const LoadingSpinner = () => (
@@ -40,7 +40,7 @@ const PublicRoute = ({ children }) => {
   return children;
 };
 
-function App() {
+function AppRoutes() {
   return (
     <Router>
       <div className="App">
@@ -86,6 +86,14 @@ function App() {
         </Routes>
       </div>
     </Router>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppRoutes />
+    </AuthProvider>
   );
 }
 

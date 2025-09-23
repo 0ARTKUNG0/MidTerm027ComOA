@@ -2,7 +2,6 @@
   "name": "software-download-frontend",
   "version": "1.0.0",
   "description": "React frontend for Software Download Manager",
-  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
