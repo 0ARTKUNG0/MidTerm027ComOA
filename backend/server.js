@@ -12,7 +12,29 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      
+      const allowedOrigins = [
+        process.env.CORS_ORIGIN || "http://localhost:3000",
+        "https://mid-term027-com-oa.vercel.app",
+        "http://localhost:3000"
+      ];
+      
+      // Remove trailing slashes and check
+      const cleanOrigin = origin.replace(/\/$/, '');
+      const isAllowed = allowedOrigins.some(allowedOrigin => 
+        allowedOrigin.replace(/\/$/, '') === cleanOrigin
+      );
+      
+      if (isAllowed) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true
   })
 );
 app.use(express.json());
