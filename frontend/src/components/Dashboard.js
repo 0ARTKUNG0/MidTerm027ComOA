@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-const API_BASE_URL = "/api";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "/api";
 const APP_NAME = process.env.REACT_APP_NAME || "Software Download Manager";
 
 const Dashboard = () => {

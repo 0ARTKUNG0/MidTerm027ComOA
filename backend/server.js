@@ -262,7 +262,7 @@ app.post("/api/download", authUtils.authenticateToken, (req, res) => {
                 id: id,
                 name: software.name,
                 downloadUrl: `${
-                  process.env.API_BASE_URL || "http://localhost:5000"
+                  process.env.API_BASE_URL || `http://localhost:${PORT}`
                 }/api/download-file/${id}`,
                 requestedBy: user.email,
                 requestedAt: new Date().toISOString(),

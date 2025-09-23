@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // Environment variables
-const API_BASE_URL = "/api";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "/api";
 const APP_NAME = process.env.REACT_APP_NAME || "Software Download Manager";
 const APP_DESCRIPTION =
   process.env.REACT_APP_DESCRIPTION ||
